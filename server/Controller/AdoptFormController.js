@@ -40,7 +40,6 @@ const deleteAllRequests = async (req, res) => {
         const { id } = req.params;
         const result = await AdoptForm.deleteMany({ petId: id });
         if (result.deletedCount === 0) {
-            console.log("Forms not found");
             return res.status(404).json({ error: 'Forms not found' });
         }
         res.status(200).json({ message: 'Forms deleted successfully' });

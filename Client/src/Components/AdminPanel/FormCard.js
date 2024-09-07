@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
+import { useAuthContext } from '../../hooks/UseAuthContext';
 
 const FormCard = (props) => {
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -8,6 +9,7 @@ const FormCard = (props) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isApproving, setIsApproving] = useState(false);
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
+  const { user } = useAuthContext();
 
   const formatTimeAgo = (updatedAt) => {
     const date = new Date(updatedAt);
@@ -25,7 +27,8 @@ const FormCard = (props) => {
           status: "Adopted"
         }),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
         }
       });
 
@@ -44,7 +47,10 @@ const FormCard = (props) => {
   const deleteFormAdoptedPet = async () => {
     try {
       const deleteResponse = await fetch(`http://localhost:4000/form/delete/many/${props.form.petId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
       });
       if (!deleteResponse.ok) {
         throw new Error('Failed to delete forms');
@@ -60,7 +66,10 @@ const FormCard = (props) => {
     setIsDeleting(true)
     try {
       const response = await fetch(`http://localhost:4000/form/reject/${props.form._id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
       })
 
       if (!response.ok) {

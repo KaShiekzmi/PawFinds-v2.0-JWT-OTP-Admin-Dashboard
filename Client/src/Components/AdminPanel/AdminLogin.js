@@ -1,38 +1,38 @@
 import React, { useState, useEffect } from "react";
 import AdminPanel from "./AdminPanel";
+import { useLogin } from '../../hooks/useLogin';
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
-  const [usersData, setUsersData] = useState([]);
+  const [loginBtnText, setLoginBtnText] = useState('Login');
+  const { login, loginError, isLoading } = useLogin();
 
   useEffect(() => {
-    const fetchUsersData = async () => {
-      try {
-        const response = await fetch('http://localhost:4000/admin/credentials');
-        if (!response.ok) {
-          throw new Error('Failed to fetch');
-        }
-        const data = await response.json();
-        setUsersData(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
+    if (loginError) {
+      setShowErrorMessage(true);
+      setTimeout(() => {
+        setShowErrorMessage(false);
+      }, 3000);
+    }
+  }, [loginError]);
+
+  const handleLogin = async () => {
+    setLoginBtnText('Logging in');
+    try {
+      await login(username.toLowerCase(), password);
+      if (!loginError) {
+        setLoginSuccess(true);
+      } else {
+        setLoginSuccess(false);
       }
-    };
-
-    fetchUsersData();
-  }, []);
-
-  const handleLogin = () => {
-    const user = usersData.username === username && usersData.password === password;
-    if (user) {
-      setLoginSuccess(true);
-      setShowErrorMessage(false);
-    } else {
+    } catch (error) {
       setLoginSuccess(false);
       setShowErrorMessage(true);
+    } finally {
+      setLoginBtnText('Login');
     }
   };
 
@@ -49,17 +49,23 @@ const AdminLogin = () => {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              />
+            />
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              />
-              {showErrorMessage && (
-                <p className="error-message">Incorrect username or password</p>
-              )}
-            <button className="float-right" onClick={handleLogin}>Login</button>
+            />
+            {showErrorMessage && (
+              <p className="error-message">{loginError}</p>
+            )}
+            <button
+              className="float-right"
+              onClick={handleLogin}
+              disabled={isLoading}
+            >
+              {loginBtnText}
+            </button>
           </div>
         </div>
       )}

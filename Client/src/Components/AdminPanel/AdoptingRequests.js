@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import FormCard from './FormCard';
+import { useAuthContext } from '../../hooks/UseAuthContext';
 
 const AdoptingRequests = () => {
   const [forms, setForms] = useState([]);
@@ -8,10 +9,15 @@ const AdoptingRequests = () => {
   const [petDetailsPopup, setPetDetailsPopup] = useState(false); 
   const [selectedPet, setSelectedPet] = useState(null); 
   const [selectedPetId, setSelectedPetId] = useState(''); 
+  const { user } = useAuthContext();
 
-  const fetchForms = async () => {
+  const fetchForms = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:4000/form/getForms');
+      const response = await fetch('http://localhost:4000/form/getForms', {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
       if (!response.ok) {
         throw new Error('An error occurred');
       }
@@ -22,11 +28,15 @@ const AdoptingRequests = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [user.token]);
 
-  const fetchPets = async () => {
+  const fetchPets = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:4000/approvedPets');
+      const response = await fetch('http://localhost:4000/approvedPets',{
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
       if (!response.ok) {
         throw new Error('An error occurred');
       }
@@ -35,12 +45,12 @@ const AdoptingRequests = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchForms();
     fetchPets();
-  }, []);
+  }, [fetchForms, fetchPets]);
 
   const petsWithRequests = pets.filter((pet) =>
     forms.some((form) => form.petId === pet._id)
@@ -68,7 +78,7 @@ const AdoptingRequests = () => {
     <div>
       <div className="dropdown-container" style={{ textAlign: 'right', marginBottom: '20px' }}>
         <select className='req-filter-selection' onChange={handlePetChange} value={selectedPetId}>
-          <option value="">All Requets</option>
+          <option value="">All Requests</option>
           {petsWithRequests.map((pet) => (
             <option key={pet._id} value={pet._id}>
               {pet.name}

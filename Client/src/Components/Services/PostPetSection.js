@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import postPet from "./images/postPet.png";
+import { useAuthContext } from "../../hooks/UseAuthContext";
 
 const PostPetSection = () => {
-  const [name, setName] = useState("");
+  const {user} = useAuthContext()
+  const [name, setName] = useState(user.userName);
   const [age, setAge] = useState("");
   const [area, setArea] = useState("");
   const [justification, setJustification] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(user.email);
   const [phone, setPhone] = useState("");
   const [formError, setFormError] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -60,11 +62,6 @@ const PostPetSection = () => {
       return;
     }
 
-    if (!isEmailValid(email)) {
-      setEmailError(true);
-      return;
-    }
-
     setIsSubmitting(true);
 
     const formData = new FormData();
@@ -83,6 +80,9 @@ const PostPetSection = () => {
     try {
       const response = await fetch("http://localhost:4000/services", {
         method: "POST",
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        },
         body: formData,
       });
 
@@ -122,7 +122,6 @@ const PostPetSection = () => {
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
           />
         </div>
 
@@ -191,7 +190,6 @@ const PostPetSection = () => {
           <input
             type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 

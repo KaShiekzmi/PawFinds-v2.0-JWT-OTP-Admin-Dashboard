@@ -1,8 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./images/logo.png";
+import { useLogout } from "../../hooks/useLogout";
+import { useAuthContext } from "../../hooks/UseAuthContext";
 
 const Navbar = (props) => {
+  const {logout} = useLogout()
+  const {user} = useAuthContext()
+  
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    await logout()
+  }
+
   return (
     <div className="navbar-container">
       <div>
@@ -23,13 +33,17 @@ const Navbar = (props) => {
             <Link to="/pets">Pets</Link>
           </li>
           <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
             <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
       </div>
-      <div>
+      <div className="logout-username">
+        <p>Welcome {user.userName}!</p>
         <Link to="/services">
-          <button className="Navbar-button">Give a Pet</button>
+          <button onClick={handleLogout} className="Navbar-button">Logout</button>
         </Link>
       </div>
     </div>

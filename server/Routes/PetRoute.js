@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get('/requests', (req, res) => allPets('Pending', req, res));
+router.get('/request', (req, res) => allPets('Pending', req, res));
 router.get('/approvedPets', (req, res) => allPets('Approved', req, res));
 router.get('/adoptedPets', (req, res) => allPets('Adopted', req, res));
 router.post('/services', upload.single('picture'), postPetRequest);

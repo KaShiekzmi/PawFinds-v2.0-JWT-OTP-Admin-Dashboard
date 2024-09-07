@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useAuthContext } from "../../hooks/UseAuthContext";
 
 function AdoptForm(props) {
-  const [email, setEmail] = useState("");
+  const {user} = useAuthContext()
+  const [email, setEmail] = useState(user.email);
   const [phoneNo, setPhoneNo] = useState("");
   const [livingSituation, setLivingSituation] = useState("");
   const [previousExperience, setPreviousExperience] = useState("");
@@ -32,11 +34,6 @@ function AdoptForm(props) {
       return;
     }
 
-    if (!isEmailValid(email)) {
-      setEmailError(true);
-      return;
-    }
-
     try {
 
       setIsSubmitting(true)
@@ -44,7 +41,8 @@ function AdoptForm(props) {
       const response = await fetch('http://localhost:4000/form/save', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
         },
         body: JSON.stringify({
           email,
@@ -116,7 +114,6 @@ function AdoptForm(props) {
               <input
                 type="text"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 className="custom-input"
               />
             </div>
