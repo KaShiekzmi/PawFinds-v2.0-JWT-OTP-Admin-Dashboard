@@ -5,10 +5,9 @@ PawFinds is a website where users can either give a pet up for adoption or adopt
 
 ### Watch PawFinds in Action
 
-[![Watch the video](https://github.com/KaShiekzmi/PawFinds-A-Pet-Adoption-System-MERN-Stack-Portfolio-with-Admin-Panel/assets/114513868/521826b2-10d9-41b4-aec3-3497e23d2cbb)](https://www.youtube.com/watch?v=wXQpAoX7_QY)
+[![Watch the video](https://github.com/user-attachments/assets/62fadd25-ea4f-46af-940b-5bab522e0e89)](https://www.youtube.com/watch?v=wXQpAoX7_QY)
 
 Click the image above to watch a demo of PawFinds on YouTube.
-
 
 ## Introduction
 PawFinds connects pet lovers with pets in need of a home. This platform simplifies pet adoption with a user-friendly experience, now with enhanced security and functionality.
