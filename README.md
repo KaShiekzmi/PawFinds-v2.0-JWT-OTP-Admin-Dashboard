@@ -5,7 +5,7 @@ PawFinds is a website where users can either give a pet up for adoption or adopt
 
 ### Watch PawFinds in Action
 
-[![Watch the video](https://github.com/user-attachments/assets/62fadd25-ea4f-46af-940b-5bab522e0e89)](https://www.youtube.com/watch?v=wXQpAoX7_QY)
+[![Watch the video](https://github.com/user-attachments/assets/62fadd25-ea4f-46af-940b-5bab522e0e89)](https://youtu.be/SCcAGzNVuu8?si=m4Hex9oKHttvYLoj)
 
 Click the image above to watch a demo of PawFinds on YouTube.
 
@@ -47,6 +47,20 @@ Follow these steps to set up the project locally:
    - EMAIL_APP_PASS=your_email_app_password
 5. Run the server: `nodemon server` runs the server using nodemon, a tool that enhances the development experience by automatically restarting the server on file changes.
 6. `npm start` to start front end.
+
+## Guide for Setting Up an App Password (for OTP emails)
+To enable your app to send emails through your Gmail account, you’ll need to generate an App Password. Follow the steps below:
+
+1. Go to the Google Account Security Page:
+   - Visit Google Account Security and make sure 2-Step Verification is enabled.
+2. Generate an App Password:
+    - Scroll down to the "Signing in to Google" section.
+    - Click on App Passwords.
+    - Select the app (e.g., "Mail") and the device (e.g., "Other") for which you are generating the password.
+    - Google will provide a App Password.
+4. Use the Generated App Password:
+    - Copy the App Password and paste it into the .env file under the EMAIL_APP_PASS field:
+    - EMAIL_APP_PASS=your_generated_app_password
 
 ### Additional Notes
 - Ensure you have Node.js and npm installed on your machine.
