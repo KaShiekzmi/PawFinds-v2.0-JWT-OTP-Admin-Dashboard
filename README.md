@@ -48,7 +48,7 @@ Follow these steps to set up the project locally:
 5. Run the server: `nodemon server` runs the server using nodemon, a tool that enhances the development experience by automatically restarting the server on file changes.
 6. `npm start` to start front end.
 
-## Guide for Setting Up an App Password (for OTP emails)
+## Guide for Setting Up an App Password (for emails)
 To enable your app to send emails through your Gmail account, you’ll need to generate an App Password. Follow the steps below:
 
 1. Go to the Google Account Security Page:
