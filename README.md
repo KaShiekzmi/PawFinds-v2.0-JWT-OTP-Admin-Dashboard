@@ -42,7 +42,7 @@ Follow these steps to set up the project locally:
 2. Install dependencies: `npm install`
 3. Create a .env file in the server directory with the following variables:
    - mongooseURL=mongodb+srv://username:password@cluster-url.mongodb.net/?retryWrites=true&w=majority&appName=pawfinds-pet-adoption-system
-   - SECRET=your_jwt_secret_key
+   - SECRET=your_jwt_secret_key (Any random string of any length)
    - EMAIL_USER=your_email@example.com
    - EMAIL_APP_PASS=your_email_app_password
 5. Run the server: `nodemon server` runs the server using nodemon, a tool that enhances the development experience by automatically restarting the server on file changes.
