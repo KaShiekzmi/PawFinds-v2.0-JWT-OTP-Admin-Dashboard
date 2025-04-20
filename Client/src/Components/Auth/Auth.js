@@ -81,7 +81,7 @@ const Auth = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:4000/api/genotp', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/genotp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
@@ -114,7 +114,7 @@ const Auth = () => {
 
 
     try {
-      const response = await fetch('http://localhost:4000/api/verifyotp', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/verifyotp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp }),
@@ -148,7 +148,7 @@ const Auth = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:4000/api/forgototp', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/forgototp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -179,7 +179,7 @@ const Auth = () => {
     setIsForgotLoading(true)
     e.preventDefault()
     try {
-      const response = await fetch('http://localhost:4000/update-password', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/update-password`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, newPassword, newConfirmPassword }),

@@ -33,7 +33,7 @@ function AdoptForm(props) {
 
       setIsSubmitting(true)
 
-      const response = await fetch('http://localhost:4000/form/save', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/form/save`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ function AdoptForm(props) {
       <div className="form-pet-container">
         <div className="pet-details">
           <div className="pet-pic">
-            <img src={`http://localhost:4000/images/${props.pet.filename}`} alt={props.pet.name} />
+            <img src={`${process.env.REACT_APP_API_URL}/images/${props.pet.filename}`} alt={props.pet.name} />
           </div>
           <div className="pet-info">
             <h2>{props.pet.name}</h2>

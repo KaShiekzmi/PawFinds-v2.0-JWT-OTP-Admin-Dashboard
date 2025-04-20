@@ -6,14 +6,14 @@ const AdoptingRequests = () => {
   const [forms, setForms] = useState([]);
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [petDetailsPopup, setPetDetailsPopup] = useState(false); 
-  const [selectedPet, setSelectedPet] = useState(null); 
-  const [selectedPetId, setSelectedPetId] = useState(''); 
+  const [petDetailsPopup, setPetDetailsPopup] = useState(false);
+  const [selectedPet, setSelectedPet] = useState(null);
+  const [selectedPetId, setSelectedPetId] = useState('');
   const { user } = useAuthContext();
 
   const fetchForms = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:4000/form/getForms', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/form/getForms`, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
@@ -32,7 +32,7 @@ const AdoptingRequests = () => {
 
   const fetchPets = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:4000/approvedPets',{
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/approvedPets`, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
@@ -63,7 +63,7 @@ const AdoptingRequests = () => {
 
   const closePetDetailsPopup = () => {
     setPetDetailsPopup(false);
-    setSelectedPet(null); 
+    setSelectedPet(null);
   };
 
   const handlePetChange = (event) => {
@@ -122,7 +122,7 @@ const AdoptingRequests = () => {
           <div className='popup-content'>
             <div className='pet-view-card'>
               <div className='pet-card-pic'>
-                <img src={`http://localhost:4000/images/${selectedPet.filename}`} alt={selectedPet.name} />
+                <img src={`${process.env.REACT_APP_API_URL}/images/${selectedPet.filename}`} alt={selectedPet.name} />
               </div>
               <div className='pet-card-details'>
                 <h2>{selectedPet.name}</h2>

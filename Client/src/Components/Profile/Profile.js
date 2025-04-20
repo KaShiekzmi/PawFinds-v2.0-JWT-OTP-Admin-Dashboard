@@ -20,7 +20,7 @@ const Profile = () => {
         const newEmail = tempValues.email.toLowerCase();
 
         try {
-            const response = await fetch('http://localhost:4000/update', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/update`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${user.token}`,
@@ -58,7 +58,7 @@ const Profile = () => {
         setSuccMessage("");
     };
 
-   return (
+    return (
         <div className="profile-container">
             <div className="profile-header">
                 <h2>Profile</h2>

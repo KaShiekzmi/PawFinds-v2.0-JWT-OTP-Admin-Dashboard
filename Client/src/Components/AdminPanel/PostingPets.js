@@ -9,7 +9,7 @@ const PostingPets = () => {
 
   const fetchRequests = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:4000/request', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/request`, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
@@ -37,7 +37,7 @@ const PostingPets = () => {
       ) : (
         requests.length > 0 ? (
           requests.map((request) => (
-            <PetCards key={request._id} pet={request} updateCards={fetchRequests} deleteBtnText={"Reject"} approveBtn={true}/>
+            <PetCards key={request._id} pet={request} updateCards={fetchRequests} deleteBtnText={"Reject"} approveBtn={true} />
           ))
         ) : (
           <p>No requests available</p>

@@ -9,7 +9,7 @@ const AdoptedHistory = () => {
 
   const fetchAdoptedPets = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:4000/adoptedPets', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/adoptedPets`, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
@@ -28,26 +28,26 @@ const AdoptedHistory = () => {
 
   useEffect(() => {
     fetchAdoptedPets();
-  }, [fetchAdoptedPets]); 
+  }, [fetchAdoptedPets]);
 
   return (
     <div className='pet-container'>
       {loading ? (
         <p>Loading...</p>
-      ) : 
-      requests.length > 0 ? (
-        requests.map((request) => (
-          <AdoptedCards
-            key={request._id}
-            pet={request}
-            updateCards={fetchAdoptedPets}
-            deleteBtnText="Delete History"
-            approveBtn={false}
-          />
-        ))
-      ) : (
-        <p>No Adopted Pets available</p>
-      )}
+      ) :
+        requests.length > 0 ? (
+          requests.map((request) => (
+            <AdoptedCards
+              key={request._id}
+              pet={request}
+              updateCards={fetchAdoptedPets}
+              deleteBtnText="Delete History"
+              approveBtn={false}
+            />
+          ))
+        ) : (
+          <p>No Adopted Pets available</p>
+        )}
     </div>
   );
 };

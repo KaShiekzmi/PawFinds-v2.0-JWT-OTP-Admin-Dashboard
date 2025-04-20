@@ -9,7 +9,7 @@ const ApprovedRequests = () => {
 
   const fetchRequests = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:4000/approvedPets', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/approvedPets`, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
@@ -37,7 +37,7 @@ const ApprovedRequests = () => {
       ) : (
         requests.length > 0 ? (
           requests.map((request) => (
-            <PetCards key={request._id} pet={request} updateCards={fetchRequests} deleteBtnText={"Delete Post"} approveBtn={false}/>
+            <PetCards key={request._id} pet={request} updateCards={fetchRequests} deleteBtnText={"Delete Post"} approveBtn={false} />
           ))
         ) : (
           <p>No Approved Pets available</p>

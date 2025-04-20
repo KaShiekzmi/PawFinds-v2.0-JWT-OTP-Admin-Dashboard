@@ -19,7 +19,7 @@ const FormCard = (props) => {
   const handleApprove = async () => {
     setIsApproving(true);
     try {
-      const response = await fetch(`http://localhost:4000/approving/${props.form.petId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/approving/${props.form.petId}`, {
         method: 'PUT',
         body: JSON.stringify({
           email: props.form.email,
@@ -43,10 +43,10 @@ const FormCard = (props) => {
       deleteFormAdoptedPet();
     }
   };
-  
+
   const deleteFormAdoptedPet = async () => {
     try {
-      const deleteResponse = await fetch(`http://localhost:4000/form/delete/many/${props.form.petId}`, {
+      const deleteResponse = await fetch(`${process.env.REACT_APP_API_URL}/form/delete/many/${props.form.petId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.token}`
@@ -56,7 +56,7 @@ const FormCard = (props) => {
         throw new Error('Failed to delete forms');
       }
     } catch (err) {
-    }finally{
+    } finally {
       setIsApproving(false);
     }
   }
@@ -65,7 +65,7 @@ const FormCard = (props) => {
   const handleReject = async () => {
     setIsDeleting(true)
     try {
-      const response = await fetch(`http://localhost:4000/form/reject/${props.form._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/form/reject/${props.form._id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.token}`

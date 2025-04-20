@@ -17,7 +17,7 @@ const Pets = () => {
         return;
       }
       try {
-        const response = await fetch('http://localhost:4000/approvedPets', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/approvedPets`, {
           headers: {
             'Authorization': `Bearer ${user.token}`
           }
@@ -27,7 +27,7 @@ const Pets = () => {
         }
         const data = await response.json();
         setPetsData(data);
-        setError(null); 
+        setError(null);
       } catch (error) {
         console.error(error);
         setError('An error occurred while fetching the data');

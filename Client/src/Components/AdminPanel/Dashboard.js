@@ -9,11 +9,11 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userResponse = await fetch('http://localhost:4000/Dashboard/user-registrations');
+                const userResponse = await fetch(`${process.env.REACT_APP_API_URL}/Dashboard/user-registrations`);
                 const userData = await userResponse.json();
                 setUserData(userData);
 
-                const petResponse = await fetch('http://localhost:4000/Dashboard/pet-types');
+                const petResponse = await fetch(`${process.env.REACT_APP_API_URL}/Dashboard/pet-types`);
                 const petData = await petResponse.json();
                 const petDataMapped = petData.map(item => ({ name: item._id, value: item.count }));
 
