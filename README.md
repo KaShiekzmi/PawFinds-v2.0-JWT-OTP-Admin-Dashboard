@@ -1,7 +1,7 @@
 # PawFinds v2.0: A Pet Adoption System | MERN Stack Portfolio with JWT Auth, OTP Verification & Admin Panel
 PawFinds is a website where users can either give a pet up for adoption or adopt one. The admin decides if a pet can be put up for adoption and reviews adoption applications. This new version includes JWT authentication, OTP verification, user profiles, and an enhanced admin dashboard with data visualization.
 
-#🌐 Deployed Version:
+# 🌐 Deployed Version:
 [Click to visit the deployed version](https://pawfinds-v2.onrender.com/)
 
 [Click to get older version PawFinds V1.0 ](https://github.com/KaShiekzmi/PawFinds-A-Pet-Adoption-System-MERN-Stack-Portfolio-with-Admin-Panel)
