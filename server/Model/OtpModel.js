@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const validator = require('validator');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
@@ -26,8 +26,8 @@ const otpSchema = new mongoose.Schema({
 });
 
 otpSchema.statics.genOtp = async function (name, email, password) {
-  const exists = await User.findOne({email})
-  if (exists){
+  const exists = await User.findOne({ email })
+  if (exists) {
     throw Error('Email already in use')
   }
   if (!name || !email || !password) {
@@ -59,7 +59,7 @@ otpSchema.statics.genOtp = async function (name, email, password) {
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(otp, salt);
 
-  const expiresAt = new Date(Date.now() + 10 * 60 * 1000); 
+  const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
 
   const userOtp = await this.create({ name, email, otpCode: hash, expiresAt });
 
@@ -83,7 +83,7 @@ otpSchema.statics.genOtp = async function (name, email, password) {
     return userOtp;
   } catch (error) {
     console.error('Error sending OTP email:', error);
-    await this.deleteOne({ email }); 
+    await this.deleteOne({ email });
     throw new Error('Failed to send OTP email');
   }
 }
@@ -108,7 +108,7 @@ otpSchema.statics.verifyOtp = async function (email, otp) {
     throw new Error('Incorrect OTP');
   }
 
-  await this.deleteOne({ email }); 
+  await this.deleteOne({ email });
 
   return { success: true, message: 'OTP verified successfully' };
 }

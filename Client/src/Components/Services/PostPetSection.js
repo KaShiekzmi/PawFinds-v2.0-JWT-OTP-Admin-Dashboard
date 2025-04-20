@@ -3,7 +3,7 @@ import postPet from "./images/postPet.png";
 import { useAuthContext } from "../../hooks/UseAuthContext";
 
 const PostPetSection = () => {
-  const {user} = useAuthContext()
+  const { user } = useAuthContext()
   const [name, setName] = useState(user.userName);
   const [age, setAge] = useState("");
   const [area, setArea] = useState("");
@@ -17,7 +17,7 @@ const PostPetSection = () => {
   const [type, setType] = useState("None");
   const [picture, setPicture] = useState(null);
   const [fileName, setFileName] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (!isSubmitting) {
@@ -29,11 +29,6 @@ const PostPetSection = () => {
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
-  };
-
-  const isEmailValid = (email) => {
-    const emailPattern = /^[a-zA-Z0-9._-]+@gmail\.com$/;
-    return emailPattern.test(email);
   };
 
   const handleFileChange = (e) => {
@@ -130,7 +125,7 @@ const PostPetSection = () => {
           <input
             type="text"
             value={age}
-            onChange={(e) => {setAge(e.target.value);}}
+            onChange={(e) => { setAge(e.target.value); }}
           />
         </div>
 

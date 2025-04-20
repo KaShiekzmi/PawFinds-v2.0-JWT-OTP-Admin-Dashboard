@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuthContext } from "../../hooks/UseAuthContext";
 
 function AdoptForm(props) {
-  const {user} = useAuthContext()
+  const { user } = useAuthContext()
   const [email, setEmail] = useState(user.email);
   const [phoneNo, setPhoneNo] = useState("");
   const [livingSituation, setLivingSituation] = useState("");
@@ -13,11 +13,6 @@ function AdoptForm(props) {
   const [ErrPopup, setErrPopup] = useState(false);
   const [SuccPopup, setSuccPopup] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const isEmailValid = (email) => {
-    const emailPattern = /^[a-zA-Z0-9._-]+@gmail\.com$/;
-    return emailPattern.test(email);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
