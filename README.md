@@ -1,6 +1,9 @@
 # PawFinds v2.0: A Pet Adoption System | MERN Stack Portfolio with JWT Auth, OTP Verification & Admin Panel
 PawFinds is a website where users can either give a pet up for adoption or adopt one. The admin decides if a pet can be put up for adoption and reviews adoption applications. This new version includes JWT authentication, OTP verification, user profiles, and an enhanced admin dashboard with data visualization.
 
+#🌐 Deployed Version:
+[Click to visit the deployed version](https://pawfinds-v2.onrender.com/)
+
 [Click to get older version PawFinds V1.0 ](https://github.com/KaShiekzmi/PawFinds-A-Pet-Adoption-System-MERN-Stack-Portfolio-with-Admin-Panel)
 
 ### Watch PawFinds in Action
@@ -45,8 +48,11 @@ Follow these steps to set up the project locally:
    - SECRET=your_jwt_secret_key (Any random string of any length)
    - EMAIL_USER=your_email@example.com
    - EMAIL_APP_PASS=your_email_app_password
-5. Run the server: `nodemon server` runs the server using nodemon, a tool that enhances the development experience by automatically restarting the server on file changes.
-6. `npm start` to start front end.
+5. Create a .env file in the client directory with the following variable
+   - For localhost deployed backend (REACT_APP_API_URL=http://localhost:4000)
+   - Or, if using backend deployment (replace with your actual Render backend URL): (REACT_APP_API_URL=https://your-backend-service)
+7. Run the server: `nodemon server` runs the server using nodemon, a tool that enhances the development experience by automatically restarting the server on file changes.
+8. `npm start` to start front end.
 
 ## Guide for Setting Up an EMAIL_APP_PASS (for emails)
 To enable your app to send emails through your Gmail account, you’ll need to generate an App Password. Follow the steps below:
