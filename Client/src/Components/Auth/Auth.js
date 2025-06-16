@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLogin } from '../../hooks/useLogin';
 import { useSignup } from '../../hooks/useSignup';
+import { Link } from 'react-router-dom';
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -299,7 +300,11 @@ const Auth = () => {
                 {showPassword ? <i className="fa fa-eye-slash icon-white"></i> : <i className="fa fa-eye icon-white"></i>}
               </button>
             </div>
-            <p onClick={() => setIsForgot(true)} className='loginSignup-forgot-password'>Forgot Password</p>
+            <p onClick={() => setIsForgot(true)} className='loginSignup-forgot-password'>Forgot Password.</p>
+            <p className='admin-link'>
+              Are you an admin? <Link to="/admin" className="admin-link-hover">Click here</Link>
+            </p>
+
             <button type="submit" className="loginSignup-btn" disabled={isLoading}>
               {signinBtn}
             </button>

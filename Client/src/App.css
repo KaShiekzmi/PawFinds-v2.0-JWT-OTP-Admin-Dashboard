@@ -1809,6 +1809,18 @@ body {
     opacity: 0.8;
 }
 
+.admin-link {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 5px 0 0 0;
+}
+
+.admin-link-hover:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 .logout-username {
     display: flex;
     justify-content: space-around;
@@ -1869,6 +1881,7 @@ body {
 .toggle-otp-btn:focus {
     outline: none;
 }
+
 .icon-white {
     color: black !important;
 }
@@ -1945,6 +1958,7 @@ body {
         transform: translateY(-20px);
     }
 }
+
 /* 404Page.css */
 .page-not-found-container {
     display: flex;
@@ -1954,80 +1968,80 @@ body {
     height: 100vh;
     background-color: #f8f9fa;
     text-align: center;
-  }
-  
-  .page-not-found-title {
+}
+
+.page-not-found-title {
     font-size: 120px;
     font-weight: bold;
     color: var(--orange);
-  }
-  
-  .page-not-found-message {
+}
+
+.page-not-found-message {
     font-size: 24px;
     color: var(--orange);
     margin-bottom: 20px;
-  }
-  
-  .page-not-found-home-link {
+}
+
+.page-not-found-home-link {
     font-size: 18px;
     color: var(--orange);
     text-decoration: none;
     font-weight: bold;
-  }
-  
-  .page-not-found-home-link:hover {
+}
+
+.page-not-found-home-link:hover {
     text-decoration: underline;
-  }
-  
-  .profile-container {
+}
+
+.profile-container {
     background-color: var(--darkGrey);
     color: var(--white);
     padding: 20px;
     border-radius: 8px;
     max-width: 600px;
     margin: 18vh auto;
-  }
-  
-  .profile-info {
+}
+
+.profile-info {
     display: flex;
     flex-direction: column;
     gap: 15px;
-  }
+}
 
-  .profile-header {
+.profile-header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     align-items: center;
-  }
+}
 
-  .profile-header > h2 {
+.profile-header>h2 {
     width: 50%;
-  }
-  
-  .profile-item {
+}
+
+.profile-item {
     display: flex;
     align-items: center;
     gap: 10px;
     justify-content: space-between;
-  }
-  
-  .profile-label {
+}
+
+.profile-label {
     font-weight: bold;
     color: var(--textGrey);
-    
-  }
-  
-  .profile-value {
+
+}
+
+.profile-value {
     flex-grow: 1;
     color: var(--white);
     max-width: 490px;
     height: 27px;
     display: flex;
     align-items: center;
-  }
-  
-  .edit-input {
+}
+
+.edit-input {
     background-color: var(--white);
     color: var(--black);
     border: 1px solid var(--textGrey);
@@ -2035,9 +2049,9 @@ body {
     border-radius: 5px;
     flex-grow: 1;
     max-width: 490px;
-  }
-  
-  .edit-btn {
+}
+
+.edit-btn {
     background-color: var(--orange);
     color: var(--white);
     border: none;
@@ -2045,12 +2059,13 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-  }
-  
-  .edit-btn:hover {
+}
+
+.edit-btn:hover {
     background-color: var(--hoverorange);
-  }
-  .dashboard-container {
+}
+
+.dashboard-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -2060,7 +2075,8 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-.dashboard-container > h2, h3 {
+.dashboard-container>h2,
+h3 {
     color: var(--orange);
     margin-bottom: 20px;
 }
@@ -2073,7 +2089,7 @@ body {
     text-align: center;
 }
 
-.total-users > h3 {
+.total-users>h3 {
     margin: 0;
     font-size: 100px;
 }
@@ -2086,12 +2102,12 @@ body {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    width: 100%; 
+    width: 100%;
     max-width: 600px;
 }
 
 .pie-chart-container .recharts-wrapper {
-    width: 100%; 
+    width: 100%;
 }
 
 .pie-chart-container h2 {
